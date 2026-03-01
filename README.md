@@ -1,6 +1,7 @@
 # LM Studio Test-Suite (V2 + Hardmode)
 
 Dieses Repository enthält zwei Benchmark-Skripte für lokale LM-Studio-Modelle (OpenAI-kompatible API auf `http://localhost:1234/v1`) und die dazugehörigen Logs.
+100% mit Codex und Antigravity erstellt.
 
 ## Was machen die Skripte?
 
