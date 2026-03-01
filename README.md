@@ -34,17 +34,17 @@ Diese Log-Dateien enthalten Ergebnisse für einen **Mac Mini mit 16 GB Arbeitssp
 
 ### 1) V2 (neuester kompletter Run: `20260301_122234`)
 
-| Modell | Pass-Rate (gesamt) | Ø Latenz |
-|---|---:|---:|
-| `qwen/qwen3-14b` | **91.7%** (22/24) | 23.87s |
-| `mistralai/ministral-3-14b-reasoning` | 87.5% (21/24) | 4.13s |
-| `google/gemma-3-12b` | 83.3% (20/24) | 6.18s |
-| `google/gemma-3-4b` | 83.3% (20/24) | **2.03s** |
-| `qwen2.5-coder-7b-instruct` | 83.3% (20/24) | 2.56s |
-| `zai-org/glm-4.6v-flash` | 79.2% (19/24) | 19.15s |
-| `deepseek/deepseek-r1-0528-qwen3-8b` | 66.7% (16/24) | 38.44s |
-| `qwen/qwen3-4b-thinking-2507` | 50.0% (12/24) | 15.59s |
-| `qwen/qwen3-8b` | 45.8% (11/24) | 22.89s |
+| Modell | Temperatur | Pass-Rate (gesamt) | Ø Latenz gesamt | Ø Latenz Coding | Ø Latenz Tool-Use | Ø Latenz Reasoning |
+|---|---:|---:|---:|---:|---:|---:|
+| `qwen/qwen3-14b` | 0.7 | **91.7%** (22/24) | 23.87s | 4.54s | 33.04s | 28.96s |
+| `mistralai/ministral-3-14b-reasoning` | 0.7 | 87.5% (21/24) | 4.13s | 4.26s | 4.46s | 3.90s |
+| `google/gemma-3-12b` | 1.0 | 83.3% (20/24) | 6.18s | 9.07s | 6.05s | 4.81s |
+| `google/gemma-3-4b` | 1.0 | 83.3% (20/24) | **2.03s** | 2.44s | 2.22s | 1.74s |
+| `qwen2.5-coder-7b-instruct` | 0.7 | 83.3% (20/24) | 2.56s | 2.40s | 2.94s | 2.46s |
+| `zai-org/glm-4.6v-flash` | 0.8 | 79.2% (19/24) | 19.15s | 32.90s | 20.26s | 11.72s |
+| `deepseek/deepseek-r1-0528-qwen3-8b` | 0.6 | 66.7% (16/24) | 38.44s | 16.75s | 70.67s | 33.16s |
+| `qwen/qwen3-4b-thinking-2507` | 0.7 | 50.0% (12/24) | 15.59s | 16.65s | 15.10s | 15.31s |
+| `qwen/qwen3-8b` | 0.7 | 45.8% (11/24) | 22.89s | 24.86s | 20.27s | 23.21s |
 
 **Kategorie-Überblick (V2):**
 
@@ -56,13 +56,13 @@ Diese Log-Dateien enthalten Ergebnisse für einen **Mac Mini mit 16 GB Arbeitssp
 
 ### 2) Hardmode (neuester JSONL-Stand: `20260301_134249`)
 
-| Modell | Pass-Rate (gesamt) | Ø Latenz |
-|---|---:|---:|
-| `qwen/qwen3-14b` | **88.9%** (8/9) | 41.28s |
-| `qwen2.5-coder-7b-instruct` | 66.7% (6/9) | 4.04s |
-| `google/gemma-3-4b` | 44.4% (4/9) | 4.89s |
-| `mistralai/ministral-3-14b-reasoning` | 44.4% (4/9) | 6.33s |
-| `zai-org/glm-4.6v-flash` | 44.4% (4/9) | 33.50s |
+| Modell | Temperatur | Pass-Rate (gesamt) | Ø Latenz |
+|---|---:|---:|---:|
+| `qwen/qwen3-14b` | 0.7 | **88.9%** (8/9) | 41.28s |
+| `qwen2.5-coder-7b-instruct` | 0.7 | 66.7% (6/9) | 4.04s |
+| `google/gemma-3-4b` | 1.0 | 44.4% (4/9) | 4.89s |
+| `mistralai/ministral-3-14b-reasoning` | 0.7 | 44.4% (4/9) | 6.33s |
+| `zai-org/glm-4.6v-flash` | 0.8 | 44.4% (4/9) | 33.50s |
 
 **Kategorie-Überblick (Hardmode):**
 
@@ -130,14 +130,16 @@ Hinweis: In beiden Skripten existieren modell-spezifische Temperatur-Overrides. 
 - LM Studio Models: [https://lmstudio.ai/models](https://lmstudio.ai/models)
 - OpenRouter: [https://openrouter.ai](https://openrouter.ai)
 
-| Modell (im Repo) | OpenRouter Modelkarte | LM Studio Modelkarte |
-|---|---|---|
-| `zai-org/glm-4.6v-flash` | [z-ai/glm-4.6v](https://openrouter.ai/z-ai/glm-4.6v) *(nächstes verfügbares Pendant)* | [z-ai/glm-4.6v](https://lmstudio.ai/models/z-ai/glm-4.6v) *(nächstes verfügbares Pendant)* |
-| `google/gemma-3-12b` | [google/gemma-3-12b-it](https://openrouter.ai/google/gemma-3-12b-it) | [google/gemma-3-12b](https://lmstudio.ai/models/google/gemma-3-12b) |
-| `mistralai/ministral-3-14b-reasoning` | [mistralai/ministral-14b-2410](https://openrouter.ai/mistralai/ministral-14b-2410) *(nächstes verfügbares Pendant)* | [Mistral-Modelle bei LM Studio](https://lmstudio.ai/models/mistralai) *(Provider-Seite)* |
-| `qwen/qwen3-8b` | [qwen/qwen3-8b](https://openrouter.ai/qwen/qwen3-8b) | [qwen/qwen3-8b](https://lmstudio.ai/models/qwen/qwen3-8b) |
-| `qwen/qwen3-14b` | [qwen/qwen3-14b](https://openrouter.ai/qwen/qwen3-14b) | [qwen/qwen3-14b](https://lmstudio.ai/models/qwen/qwen3-14b) |
-| `qwen/qwen3-4b-thinking-2507` | [qwen/qwen3-4b-thinking](https://openrouter.ai/qwen/qwen3-4b-thinking) *(nahes Pendant)* | [qwen/qwen3-4b-thinking-2507](https://lmstudio.ai/models/qwen/qwen3-4b-thinking-2507) |
-| `qwen2.5-coder-7b-instruct` | [qwen/qwen2.5-coder-7b-instruct](https://openrouter.ai/qwen/qwen2.5-coder-7b-instruct) | [qwen/qwen2.5-coder-7b-instruct](https://lmstudio.ai/models/qwen/qwen2.5-coder-7b-instruct) |
-| `deepseek/deepseek-r1-0528-qwen3-8b` | [deepseek/deepseek-r1-0528-qwen3-8b](https://openrouter.ai/deepseek/deepseek-r1-0528-qwen3-8b) | [deepseek/deepseek-r1-0528-qwen3-8b](https://lmstudio.ai/models/deepseek/deepseek-r1-0528-qwen3-8b) |
-| `google/gemma-3-4b` | [google/gemma-3-4b-it](https://openrouter.ai/google/gemma-3-4b-it) | [google/gemma-3-4b](https://lmstudio.ai/models/google/gemma-3-4b) |
+Modellgrößen unten sind die **lokalen Installationsgrößen auf diesem Mac** (konkrete MLX/GGUF-Varianten, nicht die theoretische FP16-Größe).
+
+| Modell (im Repo) | Größe (lokal, GB) | OpenRouter Modelkarte | LM Studio Modelkarte |
+|---|---:|---|---|
+| `zai-org/glm-4.6v-flash` | 6.6 | [z-ai/glm-4.6v](https://openrouter.ai/z-ai/glm-4.6v) *(nächstes verfügbares Pendant)* | [z-ai/glm-4.6v](https://lmstudio.ai/models/z-ai/glm-4.6v) *(nächstes verfügbares Pendant)* |
+| `google/gemma-3-12b` | 7.5 | [google/gemma-3-12b-it](https://openrouter.ai/google/gemma-3-12b-it) | [google/gemma-3-12b](https://lmstudio.ai/models/google/gemma-3-12b) |
+| `mistralai/ministral-3-14b-reasoning` | 8.5 | [mistralai/ministral-14b-2410](https://openrouter.ai/mistralai/ministral-14b-2410) *(nächstes verfügbares Pendant)* | [Mistral-Modelle bei LM Studio](https://lmstudio.ai/models/mistralai) *(Provider-Seite)* |
+| `qwen/qwen3-8b` | 4.3 | [qwen/qwen3-8b](https://openrouter.ai/qwen/qwen3-8b) | [qwen/qwen3-8b](https://lmstudio.ai/models/qwen/qwen3-8b) |
+| `qwen/qwen3-14b` | 7.8 | [qwen/qwen3-14b](https://openrouter.ai/qwen/qwen3-14b) | [qwen/qwen3-14b](https://lmstudio.ai/models/qwen/qwen3-14b) |
+| `qwen/qwen3-4b-thinking-2507` | 2.1 | [qwen/qwen3-4b-thinking](https://openrouter.ai/qwen/qwen3-4b-thinking) *(nahes Pendant)* | [qwen/qwen3-4b-thinking-2507](https://lmstudio.ai/models/qwen/qwen3-4b-thinking-2507) |
+| `qwen2.5-coder-7b-instruct` | 4.4 | [qwen/qwen2.5-coder-7b-instruct](https://openrouter.ai/qwen/qwen2.5-coder-7b-instruct) | [qwen/qwen2.5-coder-7b-instruct](https://lmstudio.ai/models/qwen/qwen2.5-coder-7b-instruct) |
+| `deepseek/deepseek-r1-0528-qwen3-8b` | 4.3 | [deepseek/deepseek-r1-0528-qwen3-8b](https://openrouter.ai/deepseek/deepseek-r1-0528-qwen3-8b) | [deepseek/deepseek-r1-0528-qwen3-8b](https://lmstudio.ai/models/deepseek/deepseek-r1-0528-qwen3-8b) |
+| `google/gemma-3-4b` | 2.8 | [google/gemma-3-4b-it](https://openrouter.ai/google/gemma-3-4b-it) | [google/gemma-3-4b](https://lmstudio.ai/models/google/gemma-3-4b) |
