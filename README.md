@@ -89,4 +89,55 @@ python3 lmstudio_testsuite_v2.py
 python3 lmstudio_testsuite_hard.py
 ```
 
-Optional lassen sich Modelle, Repeats, Timeout, Seed, Output-Verzeichnis usw. über CLI-Argumente setzen (siehe `--help`).
+## CLI-Argumente (für beide Skripte)
+
+| Argument | Bedeutung | Default `v2` | Default `hard` |
+|---|---|---|---|
+| `--base-url` | LM-Studio API Endpoint | `http://localhost:1234/v1` | `http://localhost:1234/v1` |
+| `--api-key` | API-Key für kompatible OpenAI-Route | `lm-studio` | `lm-studio` |
+| `--models` | Liste der zu testenden Modelle | interne Default-Modellliste | interne Default-Modellliste |
+| `--repeats` | Wie oft jeder Test pro Modell wiederholt wird | `3` | `3` |
+| `--temperature` | Fallback-Temperatur (für Modelle ohne Override) | `0.2` | `0.2` |
+| `--max-tokens` | Maximale Antwortlänge pro Request | `900` | `1000` |
+| `--timeout` | Timeout pro Request (Sekunden) | `300` | `180` |
+| `--seed` | Optionaler Seed (falls Server unterstützt) | `None` | `None` |
+| `--outdir` | Zielordner für Logs | `logs_v2` | `logs_hard_v2` |
+
+**Beispiele:**
+
+```bash
+# Nur 2 Modelle, dafür 5 Wiederholungen
+python3 lmstudio_testsuite_v2.py \
+  --models "qwen/qwen3-14b" "google/gemma-3-4b" \
+  --repeats 5
+
+# Hardmode mit eigenem Timeout und Output-Ordner
+python3 lmstudio_testsuite_hard.py \
+  --models "qwen/qwen3-14b" "qwen/qwen3-8b" \
+  --repeats 2 \
+  --timeout 240 \
+  --outdir logs_hard_custom
+
+# Reproduzierbarer Lauf (wenn Seed von der API unterstützt wird)
+python3 lmstudio_testsuite_v2.py --seed 42
+```
+
+Hinweis: In beiden Skripten existieren modell-spezifische Temperatur-Overrides. `--temperature` wirkt primär als Fallback für Modelle ohne eigenen Override.
+
+## Links: LM Studio + Modelkarten
+
+- LM Studio: [https://lmstudio.ai](https://lmstudio.ai)
+- LM Studio Models: [https://lmstudio.ai/models](https://lmstudio.ai/models)
+- OpenRouter: [https://openrouter.ai](https://openrouter.ai)
+
+| Modell (im Repo) | OpenRouter Modelkarte | LM Studio Modelkarte |
+|---|---|---|
+| `zai-org/glm-4.6v-flash` | [z-ai/glm-4.6v](https://openrouter.ai/z-ai/glm-4.6v) *(nächstes verfügbares Pendant)* | [z-ai/glm-4.6v](https://lmstudio.ai/models/z-ai/glm-4.6v) *(nächstes verfügbares Pendant)* |
+| `google/gemma-3-12b` | [google/gemma-3-12b-it](https://openrouter.ai/google/gemma-3-12b-it) | [google/gemma-3-12b](https://lmstudio.ai/models/google/gemma-3-12b) |
+| `mistralai/ministral-3-14b-reasoning` | [mistralai/ministral-14b-2410](https://openrouter.ai/mistralai/ministral-14b-2410) *(nächstes verfügbares Pendant)* | [Mistral-Modelle bei LM Studio](https://lmstudio.ai/models/mistralai) *(Provider-Seite)* |
+| `qwen/qwen3-8b` | [qwen/qwen3-8b](https://openrouter.ai/qwen/qwen3-8b) | [qwen/qwen3-8b](https://lmstudio.ai/models/qwen/qwen3-8b) |
+| `qwen/qwen3-14b` | [qwen/qwen3-14b](https://openrouter.ai/qwen/qwen3-14b) | [qwen/qwen3-14b](https://lmstudio.ai/models/qwen/qwen3-14b) |
+| `qwen/qwen3-4b-thinking-2507` | [qwen/qwen3-4b-thinking](https://openrouter.ai/qwen/qwen3-4b-thinking) *(nahes Pendant)* | [qwen/qwen3-4b-thinking-2507](https://lmstudio.ai/models/qwen/qwen3-4b-thinking-2507) |
+| `qwen2.5-coder-7b-instruct` | [qwen/qwen2.5-coder-7b-instruct](https://openrouter.ai/qwen/qwen2.5-coder-7b-instruct) | [qwen/qwen2.5-coder-7b-instruct](https://lmstudio.ai/models/qwen/qwen2.5-coder-7b-instruct) |
+| `deepseek/deepseek-r1-0528-qwen3-8b` | [deepseek/deepseek-r1-0528-qwen3-8b](https://openrouter.ai/deepseek/deepseek-r1-0528-qwen3-8b) | [deepseek/deepseek-r1-0528-qwen3-8b](https://lmstudio.ai/models/deepseek/deepseek-r1-0528-qwen3-8b) |
+| `google/gemma-3-4b` | [google/gemma-3-4b-it](https://openrouter.ai/google/gemma-3-4b-it) | [google/gemma-3-4b](https://lmstudio.ai/models/google/gemma-3-4b) |
