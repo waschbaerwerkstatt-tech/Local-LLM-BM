@@ -18,6 +18,28 @@ Dieses Repository enthält zwei Benchmark-Skripte für lokale LM-Studio-Modelle 
 | `*_report_*.txt` | Kompakter Report pro Modell (Pass-Rate, Latenz, Kategorien) |
 | `.lmstudio_test_run_state_*.json` | Checkpoint/Resume-Status |
 
+## Was wird gemessen und warum?
+
+Ziel der Test-Suite ist ein **praxisnaher Vergleich lokaler Modelle** auf einem Mac Mini (16 GB RAM), damit man schneller entscheiden kann, welches Modell für den eigenen Workflow am sinnvollsten ist.
+
+Gemessen wird pro Modell:
+
+- **Qualität/Robustheit** über die Pass-Rate (`Passes/Tests`) in vier Sichten:
+  - Gesamt
+  - Coding
+  - Tool-Use
+  - Reasoning
+- **Geschwindigkeit** über die durchschnittliche Latenz pro Test.
+- **Verlässlichkeit bei Tool-Aufgaben** (insbesondere im Hardmode), also ob das Modell Tool-Aufrufe korrekt nutzt und trotzdem die richtige finale Antwort liefert.
+
+Warum das wichtig ist:
+
+- Ein Modell kann z. B. sehr schnell sein, aber in Reasoning schwächer.
+- Ein anderes Modell kann sehr gute Genauigkeit haben, aber deutlich höhere Latenz.
+- Durch die getrennten Kategorien sieht man sofort, **wo** ein Modell stark ist (z. B. Coding) und **wo nicht** (z. B. Tool-Use unter strengen Formatregeln).
+
+Kurz: Die Suite soll kein theoretischer Benchmark sein, sondern eine **konkrete Entscheidungsgrundlage** für den lokalen Einsatz.
+
 ## Testumgebung
 
 Diese Log-Dateien enthalten Ergebnisse für einen **Mac Mini mit 16 GB Arbeitsspeicher**.
