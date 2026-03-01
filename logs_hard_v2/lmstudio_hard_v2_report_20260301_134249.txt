@@ -1,0 +1,97 @@
+LM STUDIO HARDMODE V2 REPORT
+Generated: 2026-03-01T13:52:48
+
+MODEL: google/gemma-3-4b
+  Overall pass-rate: 4/7 = 57.1%
+  Avg latency: 3.131s | Std latency: 2.958s
+  Answer pass-rate: 4/7 = 57.1%
+  Tool compliance pass-rate: 7/7 = 100.0%
+
+  Category: coding
+    pass-rate: 1/2 = 50.0%
+    avg: 6.908s | std: 2.275s
+  Category: reasoning
+    pass-rate: 1/3 = 33.3%
+    avg: 0.443s | std: 0.037s
+  Category: tooluse
+    pass-rate: 2/2 = 100.0%
+    avg: 3.385s | std: 0.527s
+    tool_calls_seen rate: 2/2 = 100.0%
+
+------------------------------------------------------------
+
+MODEL: mistralai/ministral-3-14b-reasoning
+  Overall pass-rate: 3/7 = 42.9%
+  Avg latency: 5.974s | Std latency: 8.233s
+  Answer pass-rate: 3/7 = 42.9%
+  Tool compliance pass-rate: 7/7 = 100.0%
+
+  Category: coding
+    pass-rate: 0/2 = 0.0%
+    avg: 14.376s | std: 11.202s
+  Category: reasoning
+    pass-rate: 1/3 = 33.3%
+    avg: 0.764s | std: 0.085s
+  Category: tooluse
+    pass-rate: 2/2 = 100.0%
+    avg: 5.388s | std: 0.260s
+    tool_calls_seen rate: 2/2 = 100.0%
+
+------------------------------------------------------------
+
+MODEL: qwen/qwen3-14b
+  Overall pass-rate: 6/7 = 85.7%
+  Avg latency: 40.621s | Std latency: 23.511s
+  Answer pass-rate: 6/7 = 85.7%
+  Tool compliance pass-rate: 7/7 = 100.0%
+
+  Category: coding
+    pass-rate: 1/2 = 50.0%
+    avg: 13.989s | std: 10.548s
+  Category: reasoning
+    pass-rate: 3/3 = 100.0%
+    avg: 49.468s | std: 21.396s
+  Category: tooluse
+    pass-rate: 2/2 = 100.0%
+    avg: 53.982s | std: 11.472s
+    tool_calls_seen rate: 2/2 = 100.0%
+
+------------------------------------------------------------
+
+MODEL: qwen2.5-coder-7b-instruct
+  Overall pass-rate: 4/7 = 57.1%
+  Avg latency: 3.407s | Std latency: 3.754s
+  Answer pass-rate: 4/7 = 57.1%
+  Tool compliance pass-rate: 7/7 = 100.0%
+
+  Category: coding
+    pass-rate: 1/2 = 50.0%
+    avg: 6.739s | std: 4.753s
+  Category: reasoning
+    pass-rate: 1/3 = 33.3%
+    avg: 0.420s | std: 0.021s
+  Category: tooluse
+    pass-rate: 2/2 = 100.0%
+    avg: 4.556s | std: 0.961s
+    tool_calls_seen rate: 2/2 = 100.0%
+
+------------------------------------------------------------
+
+MODEL: zai-org/glm-4.6v-flash
+  Overall pass-rate: 4/7 = 57.1%
+  Avg latency: 25.593s | Std latency: 14.920s
+  Answer pass-rate: 4/7 = 57.1%
+  Tool compliance pass-rate: 7/7 = 100.0%
+
+  Category: coding
+    pass-rate: 1/2 = 50.0%
+    avg: 37.542s | std: 17.528s
+  Category: reasoning
+    pass-rate: 2/3 = 66.7%
+    avg: 12.600s | std: 1.665s
+  Category: tooluse
+    pass-rate: 1/2 = 50.0%
+    avg: 33.134s | std: 3.856s
+    tool_calls_seen rate: 2/2 = 100.0%
+
+------------------------------------------------------------

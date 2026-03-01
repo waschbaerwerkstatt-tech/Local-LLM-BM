@@ -1,0 +1,12 @@
+# Logs
+*.log
+logs/
+*.out
+
+# macOS
+.DS_Store
+
+# Python (falls relevant)
+__pycache__/
+*.pyc
+.venv/

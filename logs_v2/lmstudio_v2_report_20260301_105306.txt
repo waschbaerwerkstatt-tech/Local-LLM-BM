@@ -1,0 +1,155 @@
+LM STUDIO TESTSUITE V2 REPORT
+Generated: 2026-03-01T11:50:16
+
+MODEL: deepseek/deepseek-r1-0528-qwen3-8b
+  Overall pass-rate: 14/24 = 58.3%
+  Avg latency: 40.146s | Std latency: 30.431s
+
+  Category: coding
+    pass-rate: 6/6 = 100.0%
+    avg: 13.142s | std: 8.759s
+  Category: reasoning
+    pass-rate: 7/12 = 58.3%
+    avg: 30.792s | std: 9.425s
+  Category: tooluse
+    pass-rate: 1/6 = 16.7%
+    avg: 85.860s | std: 21.351s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
+
+MODEL: google/gemma-3-12b
+  Overall pass-rate: 21/24 = 87.5%
+  Avg latency: 5.540s | Std latency: 4.380s
+
+  Category: coding
+    pass-rate: 6/6 = 100.0%
+    avg: 9.171s | std: 3.434s
+  Category: reasoning
+    pass-rate: 9/12 = 75.0%
+    avg: 3.410s | std: 4.414s
+  Category: tooluse
+    pass-rate: 6/6 = 100.0%
+    avg: 6.167s | std: 1.820s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
+
+MODEL: google/gemma-3-4b
+  Overall pass-rate: 21/24 = 87.5%
+  Avg latency: 2.582s | Std latency: 3.211s
+
+  Category: coding
+    pass-rate: 6/6 = 100.0%
+    avg: 2.320s | std: 0.414s
+  Category: reasoning
+    pass-rate: 9/12 = 75.0%
+    avg: 2.891s | std: 4.478s
+  Category: tooluse
+    pass-rate: 6/6 = 100.0%
+    avg: 2.227s | std: 0.751s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
+
+MODEL: mistralai/ministral-3-14b-reasoning
+  Overall pass-rate: 21/24 = 87.5%
+  Avg latency: 4.063s | Std latency: 3.965s
+
+  Category: coding
+    pass-rate: 6/6 = 100.0%
+    avg: 4.193s | std: 0.753s
+  Category: reasoning
+    pass-rate: 9/12 = 75.0%
+    avg: 3.690s | std: 5.461s
+  Category: tooluse
+    pass-rate: 6/6 = 100.0%
+    avg: 4.680s | std: 1.409s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
+
+MODEL: qwen/qwen3-14b
+  Overall pass-rate: 22/24 = 91.7%
+  Avg latency: 28.530s | Std latency: 19.604s
+
+  Category: coding
+    pass-rate: 6/6 = 100.0%
+    avg: 4.591s | std: 0.390s
+  Category: reasoning
+    pass-rate: 11/12 = 91.7%
+    avg: 35.248s | std: 11.758s
+  Category: tooluse
+    pass-rate: 5/6 = 83.3%
+    avg: 39.031s | std: 22.067s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
+
+MODEL: qwen/qwen3-4b-thinking-2507
+  Overall pass-rate: 12/24 = 50.0%
+  Avg latency: 14.247s | Std latency: 4.986s
+
+  Category: coding
+    pass-rate: 3/6 = 50.0%
+    avg: 15.346s | std: 7.268s
+  Category: reasoning
+    pass-rate: 3/12 = 25.0%
+    avg: 14.882s | std: 3.374s
+  Category: tooluse
+    pass-rate: 6/6 = 100.0%
+    avg: 11.880s | std: 4.031s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
+
+MODEL: qwen/qwen3-8b
+  Overall pass-rate: 13/24 = 54.2%
+  Avg latency: 23.921s | Std latency: 6.994s
+
+  Category: coding
+    pass-rate: 6/6 = 100.0%
+    avg: 28.948s | std: 3.977s
+  Category: reasoning
+    pass-rate: 3/12 = 25.0%
+    avg: 24.538s | std: 7.239s
+  Category: tooluse
+    pass-rate: 4/6 = 66.7%
+    avg: 17.659s | std: 3.133s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
+
+MODEL: qwen2.5-coder-7b-instruct
+  Overall pass-rate: 18/24 = 75.0%
+  Avg latency: 2.618s | Std latency: 2.686s
+
+  Category: coding
+    pass-rate: 6/6 = 100.0%
+    avg: 2.473s | std: 0.219s
+  Category: reasoning
+    pass-rate: 9/12 = 75.0%
+    avg: 2.402s | std: 3.690s
+  Category: tooluse
+    pass-rate: 3/6 = 50.0%
+    avg: 3.197s | std: 1.066s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
+
+MODEL: zai-org/glm-4.6v-flash
+  Overall pass-rate: 17/24 = 70.8%
+  Avg latency: 18.016s | Std latency: 9.508s
+
+  Category: coding
+    pass-rate: 3/6 = 50.0%
+    avg: 29.171s | std: 9.437s
+  Category: reasoning
+    pass-rate: 11/12 = 91.7%
+    avg: 11.850s | std: 4.428s
+  Category: tooluse
+    pass-rate: 3/6 = 50.0%
+    avg: 19.191s | std: 5.612s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
