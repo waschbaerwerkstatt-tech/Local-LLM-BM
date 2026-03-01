@@ -34,43 +34,27 @@ Diese Log-Dateien enthalten Ergebnisse für einen **Mac Mini mit 16 GB Arbeitssp
 
 ### 1) V2 (neuester kompletter Run: `20260301_122234`)
 
-| Modell | Temperatur | Pass-Rate (gesamt) | Ø Latenz gesamt | Ø Latenz Coding | Ø Latenz Tool-Use | Ø Latenz Reasoning |
-|---|---:|---:|---:|---:|---:|---:|
-| `qwen/qwen3-14b` | 0.7 | **91.7%** (22/24) | 23.87s | 4.54s | 33.04s | 28.96s |
-| `mistralai/ministral-3-14b-reasoning` | 0.7 | 87.5% (21/24) | 4.13s | 4.26s | 4.46s | 3.90s |
-| `google/gemma-3-12b` | 1.0 | 83.3% (20/24) | 6.18s | 9.07s | 6.05s | 4.81s |
-| `google/gemma-3-4b` | 1.0 | 83.3% (20/24) | **2.03s** | 2.44s | 2.22s | 1.74s |
-| `qwen2.5-coder-7b-instruct` | 0.7 | 83.3% (20/24) | 2.56s | 2.40s | 2.94s | 2.46s |
-| `zai-org/glm-4.6v-flash` | 0.8 | 79.2% (19/24) | 19.15s | 32.90s | 20.26s | 11.72s |
-| `deepseek/deepseek-r1-0528-qwen3-8b` | 0.6 | 66.7% (16/24) | 38.44s | 16.75s | 70.67s | 33.16s |
-| `qwen/qwen3-4b-thinking-2507` | 0.7 | 50.0% (12/24) | 15.59s | 16.65s | 15.10s | 15.31s |
-| `qwen/qwen3-8b` | 0.7 | 45.8% (11/24) | 22.89s | 24.86s | 20.27s | 23.21s |
-
-**Kategorie-Überblick (V2):**
-
-| Kategorie | Pass-Rate | Ø Latenz |
-|---|---:|---:|
-| Coding | 85.2% (46/54) | 12.65s |
-| Tool-Use | 79.6% (43/54) | 19.45s |
-| Reasoning | 66.7% (72/108) | 13.92s |
+| Modell | Gesamt (Passrate / Passes / Ø Latenz) | Coding (Passrate / Passes / Ø Latenz) | Tool-Use (Passrate / Passes / Ø Latenz) | Reasoning (Passrate / Passes / Ø Latenz) |
+|---|---|---|---|---|
+| `qwen/qwen3-14b` | **91.7% (22/24) - 23.87s** | 100.0% (6/6) - 4.54s | 83.3% (5/6) - 33.04s | 91.7% (11/12) - 28.96s |
+| `mistralai/ministral-3-14b-reasoning` | 87.5% (21/24) - 4.13s | 100.0% (6/6) - 4.26s | 100.0% (6/6) - 4.46s | 75.0% (9/12) - 3.90s |
+| `google/gemma-3-12b` | 83.3% (20/24) - 6.18s | 83.3% (5/6) - 9.07s | 100.0% (6/6) - 6.05s | 75.0% (9/12) - 4.81s |
+| `google/gemma-3-4b` | 83.3% (20/24) - **2.03s** | 83.3% (5/6) - 2.44s | 100.0% (6/6) - 2.22s | 75.0% (9/12) - 1.74s |
+| `qwen2.5-coder-7b-instruct` | 83.3% (20/24) - 2.56s | 100.0% (6/6) - 2.40s | 83.3% (5/6) - 2.94s | 75.0% (9/12) - 2.46s |
+| `zai-org/glm-4.6v-flash` | 79.2% (19/24) - 19.15s | 66.7% (4/6) - 32.90s | 50.0% (3/6) - 20.26s | 100.0% (12/12) - 11.72s |
+| `deepseek/deepseek-r1-0528-qwen3-8b` | 66.7% (16/24) - 38.44s | 100.0% (6/6) - 16.75s | 50.0% (3/6) - 70.67s | 58.3% (7/12) - 33.16s |
+| `qwen/qwen3-4b-thinking-2507` | 50.0% (12/24) - 15.59s | 50.0% (3/6) - 16.65s | 100.0% (6/6) - 15.10s | 25.0% (3/12) - 15.31s |
+| `qwen/qwen3-8b` | 45.8% (11/24) - 22.89s | 83.3% (5/6) - 24.86s | 50.0% (3/6) - 20.27s | 25.0% (3/12) - 23.21s |
 
 ### 2) Hardmode (neuester JSONL-Stand: `20260301_134249`)
 
-| Modell | Temperatur | Pass-Rate (gesamt) | Ø Latenz |
-|---|---:|---:|---:|
-| `qwen/qwen3-14b` | 0.7 | **88.9%** (8/9) | 41.28s |
-| `qwen2.5-coder-7b-instruct` | 0.7 | 66.7% (6/9) | 4.04s |
-| `google/gemma-3-4b` | 1.0 | 44.4% (4/9) | 4.89s |
-| `mistralai/ministral-3-14b-reasoning` | 0.7 | 44.4% (4/9) | 6.33s |
-| `zai-org/glm-4.6v-flash` | 0.8 | 44.4% (4/9) | 33.50s |
-
-**Kategorie-Überblick (Hardmode):**
-
-| Kategorie | Pass-Rate | Ø Latenz |
-|---|---:|---:|
-| Tool-Use | 73.3% (11/15) | 26.95s |
-| Reasoning | 53.3% (8/15) | 12.74s |
-| Coding | 46.7% (7/15) | 14.33s |
+| Modell | Gesamt (Passrate / Passes / Ø Latenz) | Coding (Passrate / Passes / Ø Latenz) | Tool-Use (Passrate / Passes / Ø Latenz) | Reasoning (Passrate / Passes / Ø Latenz) |
+|---|---|---|---|---|
+| `qwen/qwen3-14b` | **88.9% (8/9) - 41.28s** | 66.7% (2/3) - 12.02s | 100.0% (3/3) - 62.34s | 100.0% (3/3) - 49.47s |
+| `qwen2.5-coder-7b-instruct` | 66.7% (6/9) - 4.04s | 66.7% (2/3) - 6.21s | 100.0% (3/3) - 5.48s | 33.3% (1/3) - 0.42s |
+| `google/gemma-3-4b` | 44.4% (4/9) - 4.89s | 33.3% (1/3) - 5.82s | 66.7% (2/3) - 8.40s | 33.3% (1/3) - 0.44s |
+| `mistralai/ministral-3-14b-reasoning` | 44.4% (4/9) - 6.33s | 33.3% (1/3) - 12.36s | 66.7% (2/3) - 5.87s | 33.3% (1/3) - 0.76s |
+| `zai-org/glm-4.6v-flash` | 44.4% (4/9) - 33.50s | 33.3% (1/3) - 35.25s | 33.3% (1/3) - 52.66s | 66.7% (2/3) - 12.60s |
 
 ## Kurz-Kommentar zu den Logs
 
