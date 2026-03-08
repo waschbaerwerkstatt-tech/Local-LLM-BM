@@ -21,6 +21,7 @@ import os
 import re
 import statistics
 import subprocess
+import sys
 import tempfile
 import time
 from dataclasses import dataclass
@@ -603,6 +604,7 @@ def compute_config_hash(args: argparse.Namespace) -> str:
         "model_source": args.model_source,
         "repeats": args.repeats,
         "temperature": args.temperature,
+        "temperature_was_explicit": getattr(args, "temperature_was_explicit", False),
         "max_tokens": args.max_tokens,
         "seed": args.seed,
         "model_temperatures": MODEL_TEMPERATURES,
@@ -648,6 +650,10 @@ def main():
     ap.add_argument("--seed", type=int, default=None, help="Optional. If server supports it.")
     ap.add_argument("--outdir", default="logs_v2")
     args = ap.parse_args()
+    args.temperature_was_explicit = any(
+        arg == "--temperature" or arg.startswith("--temperature=")
+        for arg in sys.argv[1:]
+    )
 
     selected_models, model_info = resolve_models(
         explicit_models=args.models,
@@ -682,6 +688,9 @@ def main():
         print("Warning: these explicit models are not currently reported by /v1/models:")
         for model in unavailable:
             print(f"  - {model}")
+
+    if args.temperature_was_explicit:
+        print(f"Explicit temperature override active: {args.temperature}")
 
     tests = build_tests()
     config_hash = compute_config_hash(args)
@@ -729,8 +738,12 @@ def main():
     with open(jsonl_path, file_mode, encoding="utf-8") as jf:
         for model in args.models:
             # Model-spezifische Temperatur holen:
-            model_temp = get_model_temperature(model, args.temperature)
-            
+            model_temp = get_model_temperature(
+                model,
+                args.temperature,
+                honor_model_overrides=not args.temperature_was_explicit,
+            )
+
             warmup_model(args.base_url, args.api_key, model, args.timeout)
             for rep in range(1, args.repeats + 1):
                 print(f"\n--- Iteration {rep}/{args.repeats} for model: {model} (Temp: {model_temp}) ---")

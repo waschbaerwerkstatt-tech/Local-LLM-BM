@@ -70,7 +70,10 @@ def sort_model_ids(model_ids: Sequence[str], preferred_models: Sequence[str]) ->
     return preferred + remaining
 
 
-def get_model_temperature(model: str, fallback: float) -> float:
+def get_model_temperature(model: str, fallback: float, honor_model_overrides: bool = True) -> float:
+    if not honor_model_overrides:
+        return fallback
+
     if model in MODEL_TEMPERATURES:
         return MODEL_TEMPERATURES[model]
 

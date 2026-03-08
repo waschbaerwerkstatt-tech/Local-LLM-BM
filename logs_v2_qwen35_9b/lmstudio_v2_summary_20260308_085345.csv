@@ -1,0 +1,30 @@
+timestamp,model,repeat,test_id,category,pass,duration_s,status,tool_calls_seen,tool_calls_count,validator_details
+2026-03-08T08:54:31,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,1,reasoning_01_discount,reasoning,False,35.3041,ok,False,0,got=1.0 expected=80.0 diff=79.0 tol=1e-06
+2026-03-08T08:54:41,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,1,reasoning_02_split,reasoning,True,10.7642,ok,False,0,got=42.0 expected=42.0 diff=0.0 tol=1e-06
+2026-03-08T08:55:14,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,1,reasoning_03_syllogism,reasoning,True,32.6361,ok,False,0,ok
+2026-03-08T08:55:40,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,1,reasoning_04_two_numbers,reasoning,False,25.4703,ok,False,0,"got=(11.0,3.0) expected=(7.0,4.0) tol=1e-06"
+2026-03-08T08:56:00,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,1,coding_01_median,coding,False,20.8082,ok,False,0,"nonzero_exit=1 stderr=File ""/var/folders/9l/75gc86x118924klg7v0zm1_h0000gn/T/tmpbwsl7tun/solution.py"", line 11
+    Key considerations:
+        ^
+SyntaxError: invalid syntax"
+2026-03-08T08:56:15,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,1,coding_02_palindrome,coding,True,14.0928,ok,False,0,stdout=True dur=0.064s expected=True
+2026-03-08T08:56:32,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,1,tooluse_01_calc,tooluse,False,17.2865,ok,True,1,got=17.0 expected=162 diff=145.0 tol=1e-06
+2026-03-08T08:56:42,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,1,tooluse_02_kv,tooluse,True,10.2802,ok,True,1,ok
+2026-03-08T08:57:06,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,2,reasoning_01_discount,reasoning,True,23.3709,ok,False,0,got=80.0 expected=80.0 diff=0.0 tol=1e-06
+2026-03-08T08:57:20,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,2,reasoning_02_split,reasoning,True,14.6825,ok,False,0,got=42.0 expected=42.0 diff=0.0 tol=1e-06
+2026-03-08T08:58:06,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,2,reasoning_03_syllogism,reasoning,True,45.8016,ok,False,0,ok
+2026-03-08T08:58:36,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,2,reasoning_04_two_numbers,reasoning,False,30.2771,ok,False,0,"got=(11.0,1.0) expected=(7.0,4.0) tol=1e-06"
+2026-03-08T08:58:53,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,2,coding_01_median,coding,False,16.9111,ok,False,0,"nonzero_exit=1 stderr=File ""/var/folders/9l/75gc86x118924klg7v0zm1_h0000gn/T/tmpbgtsj79b/solution.py"", line 13
+    nums = [3, 1, 4, 1, 5]
+IndentationError: expected an indented block"
+2026-03-08T08:59:15,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,2,coding_02_palindrome,coding,True,21.6748,ok,False,0,stdout=True dur=0.069s expected=True
+2026-03-08T08:59:30,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,2,tooluse_01_calc,tooluse,True,14.9076,ok,True,1,got=162.0 expected=162 diff=0.0 tol=1e-06
+2026-03-08T08:59:41,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,2,tooluse_02_kv,tooluse,True,11.3183,ok,True,1,ok
+2026-03-08T09:00:39,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,3,reasoning_01_discount,reasoning,False,57.6256,ok,False,0,got=1.0 expected=80.0 diff=79.0 tol=1e-06
+2026-03-08T09:01:07,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,3,reasoning_02_split,reasoning,False,28.4388,ok,False,0,got=3.0 expected=42.0 diff=39.0 tol=1e-06
+2026-03-08T09:01:36,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,3,reasoning_03_syllogism,reasoning,True,28.6472,ok,False,0,ok
+2026-03-08T09:02:05,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,3,reasoning_04_two_numbers,reasoning,False,28.571,ok,False,0,"got=(11.0,3.0) expected=(7.0,4.0) tol=1e-06"
+2026-03-08T09:02:49,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,3,coding_01_median,coding,True,44.5168,ok,False,0,stdout=3 dur=0.068s expected=3
+2026-03-08T09:03:10,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,3,coding_02_palindrome,coding,True,20.5154,ok,False,0,stdout=True dur=0.065s expected=True
+2026-03-08T09:03:28,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,3,tooluse_01_calc,tooluse,False,18.0078,ok,True,1,got=17.0 expected=162 diff=145.0 tol=1e-06
+2026-03-08T09:03:39,qwen3.5-9b-claude-4.6-opus-reasoning-distilled,3,tooluse_02_kv,tooluse,True,11.2733,ok,True,1,ok

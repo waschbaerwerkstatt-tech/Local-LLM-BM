@@ -1,0 +1,32 @@
+{
+  "config_hash": "671258cda02b10aee7f4cf78265217d3",
+  "completed_runs": {
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___reasoning_01_discount": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___reasoning_02_split": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___reasoning_03_syllogism": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___reasoning_04_two_numbers": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___coding_01_median": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___coding_02_palindrome": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___tooluse_01_calc": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___tooluse_02_kv": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep2___reasoning_01_discount": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep2___reasoning_02_split": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep2___reasoning_03_syllogism": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep2___reasoning_04_two_numbers": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep2___coding_01_median": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep2___coding_02_palindrome": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep2___tooluse_01_calc": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep2___tooluse_02_kv": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep3___reasoning_01_discount": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep3___reasoning_02_split": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep3___reasoning_03_syllogism": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep3___reasoning_04_two_numbers": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep3___coding_01_median": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep3___coding_02_palindrome": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep3___tooluse_01_calc": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep3___tooluse_02_kv": true
+  },
+  "jsonl_path": "logs_v2_qwen35_9b/lmstudio_v2_20260308_085345.jsonl",
+  "csv_path": "logs_v2_qwen35_9b/lmstudio_v2_summary_20260308_085345.csv",
+  "report_path": "logs_v2_qwen35_9b/lmstudio_v2_report_20260308_085345.txt"
+}

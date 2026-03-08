@@ -124,7 +124,7 @@ Standardmäßig verwenden beide Skripte jetzt `--model-source auto`:
 | `--models-root` | Root-Pfad für lokale Disk-Erkennung | `~/.lmstudio/models` | `~/.lmstudio/models` |
 | `--list-available-models` | Listet API-Modelle und lokale Downloads, führt keine Tests aus | `false` | `false` |
 | `--repeats` | Wie oft jeder Test pro Modell wiederholt wird | `3` | `3` |
-| `--temperature` | Fallback-Temperatur (für Modelle ohne Override) | `0.2` | `0.2` |
+| `--temperature` | Basis-Temperatur; wenn explizit gesetzt, überschreibt sie Modell-Overrides | `0.2` | `0.2` |
 | `--max-tokens` | Maximale Antwortlänge pro Request | `900` | `1000` |
 | `--timeout` | Timeout pro Request (Sekunden) | `300` | `180` |
 | `--seed` | Optionaler Seed (falls Server unterstützt) | `None` | `None` |
@@ -155,7 +155,7 @@ python3 lmstudio_testsuite_hard.py \
 python3 lmstudio_testsuite_v2.py --seed 42
 ```
 
-Hinweis: In beiden Skripten existieren modell-spezifische Temperatur-Overrides. `--temperature` wirkt primär als Fallback für Modelle ohne eigenen Override.
+Hinweis: Ohne explizites `--temperature` nutzen beide Skripte weiterhin modell-spezifische Temperatur-Overrides. Sobald `--temperature` gesetzt wird, gilt dieser Wert fuer alle ausgewaehlten Modelle.
 
 ## Links: LM Studio + Modelkarten
 

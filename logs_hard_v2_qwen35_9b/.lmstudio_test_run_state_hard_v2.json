@@ -1,0 +1,12 @@
+{
+  "config_hash": "04552e7fcdaab2e07a6e92b13a50fe11",
+  "completed_runs": {
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___reasoning_hard_01": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___reasoning_hard_02": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___reasoning_hard_03": true,
+    "qwen3.5-9b-claude-4.6-opus-reasoning-distilled___temp0.7___rep1___coding_hard_01": true
+  },
+  "jsonl_path": "logs_hard_v2_qwen35_9b/lmstudio_hard_v2_20260308_090339.jsonl",
+  "csv_path": "logs_hard_v2_qwen35_9b/lmstudio_hard_v2_summary_20260308_090339.csv",
+  "report_path": "logs_hard_v2_qwen35_9b/lmstudio_hard_v2_report_20260308_090339.txt"
+}
