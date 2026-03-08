@@ -45,6 +45,17 @@ Kurz: Die Suite soll kein theoretischer Benchmark sein, sondern eine **konkrete 
 
 Diese Log-Dateien enthalten Ergebnisse für einen **Mac Mini mit 16 GB Arbeitsspeicher**.
 
+## Neue lokale Downloads (erkannt am 2026-03-08)
+
+Unter `~/.lmstudio/models` liegen aktuell zusätzlich diese neueren Qwen3.5-Distillate:
+
+- `Jackrong/Qwen3.5-2B-Claude-4.6-Opus-Reasoning-Distilled-GGUF`
+- `Jackrong/Qwen3.5-4B-Claude-4.6-Opus-Reasoning-Distilled-GGUF`
+- `Jackrong/Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-GGUF`
+- `Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF`
+
+Die Suiten sind jetzt so vorbereitet, dass sie beim nächsten Lauf automatisch alle live von LM Studio gemeldeten LLM-Modelle aus `/v1/models` übernehmen können. Damit müssen neue Downloads nicht mehr manuell in beiden Python-Dateien eingetragen werden.
+
 ## Vorhandene Runs (Stand: 2026-03-01)
 
 | Run | Hauptdatei | Umfang | Kommentar |
@@ -96,13 +107,22 @@ python3 lmstudio_testsuite_v2.py
 python3 lmstudio_testsuite_hard.py
 ```
 
+Standardmäßig verwenden beide Skripte jetzt `--model-source auto`:
+
+- Wenn `http://localhost:1234/v1/models` erreichbar ist, werden alle dort sichtbaren LLM-Modelle getestet.
+- Wenn der Server noch nicht läuft, fällt die Suite auf die bisherige interne Default-Liste zurück.
+- Mit `--list-available-models` lässt sich vorab prüfen, was live per API sichtbar ist und was nur lokal auf Disk liegt.
+
 ## CLI-Argumente (für beide Skripte)
 
 | Argument | Bedeutung | Default `v2` | Default `hard` |
 |---|---|---|---|
 | `--base-url` | LM-Studio API Endpoint | `http://localhost:1234/v1` | `http://localhost:1234/v1` |
 | `--api-key` | API-Key für kompatible OpenAI-Route | `lm-studio` | `lm-studio` |
-| `--models` | Liste der zu testenden Modelle | interne Default-Modellliste | interne Default-Modellliste |
+| `--models` | Explizite Liste der zu testenden Modelle | `None` | `None` |
+| `--model-source` | Modellquelle: `auto`, `api` oder `defaults` | `auto` | `auto` |
+| `--models-root` | Root-Pfad für lokale Disk-Erkennung | `~/.lmstudio/models` | `~/.lmstudio/models` |
+| `--list-available-models` | Listet API-Modelle und lokale Downloads, führt keine Tests aus | `false` | `false` |
 | `--repeats` | Wie oft jeder Test pro Modell wiederholt wird | `3` | `3` |
 | `--temperature` | Fallback-Temperatur (für Modelle ohne Override) | `0.2` | `0.2` |
 | `--max-tokens` | Maximale Antwortlänge pro Request | `900` | `1000` |
@@ -113,6 +133,12 @@ python3 lmstudio_testsuite_hard.py
 **Beispiele:**
 
 ```bash
+# Zuerst prüfen, was der laufende LM-Studio-Server wirklich anbietet
+python3 lmstudio_testsuite_v2.py --list-available-models
+
+# Alle aktuell live sichtbaren LLMs testen (inkl. neuer Downloads)
+python3 lmstudio_testsuite_v2.py --model-source api
+
 # Nur 2 Modelle, dafür 5 Wiederholungen
 python3 lmstudio_testsuite_v2.py \
   --models "qwen/qwen3-14b" "google/gemma-3-4b" \

@@ -28,14 +28,18 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import warnings
 
-import requests
+from lmstudio_model_utils import (
+    DEFAULT_MODELS,
+    MODEL_TEMPERATURES,
+    format_model_inventory,
+    get_model_temperature,
+    resolve_models,
+)
 
 # Unterdrückt die urllib3 NotOpenSSLWarning für macOS (nur relevant für HTTPS, Script nutzt HTTP)
-try:
-    import urllib3
-    warnings.filterwarnings("ignore", category=urllib3.exceptions.NotOpenSSLWarning)
-except Exception:
-    pass
+warnings.filterwarnings("ignore", message="urllib3 v2 only supports OpenSSL 1.1.1+")
+
+import requests
 
 
 # -----------------------------
@@ -47,42 +51,6 @@ DEFAULT_TEMPERATURE = 0.2
 DEFAULT_MAX_TOKENS = 900
 DEFAULT_REPEATS = 3
 DEFAULT_TIMEOUT_S = 300
-
-DEFAULT_MODELS = [
-    "zai-org/glm-4.6v-flash",
-    "google/gemma-3-12b",
-    "mistralai/ministral-3-14b-reasoning",
-    "qwen/qwen3-8b",
-    "qwen/qwen3-14b",
-    "qwen/qwen3-4b-thinking-2507",
-    "qwen2.5-coder-7b-instruct",
-    "deepseek/deepseek-r1-0528-qwen3-8b",
-    "google/gemma-3-4b"
-]
-
-# Model-specific temperature overrides
-MODEL_TEMPERATURES = {
-    # DeepSeek R1 reasoning models (recommended 0.5 - 0.7)
-    "deepseek/deepseek-r1-0528-qwen3-8b": 0.6,
-    
-    # Qwen 3 (Instruct usually 0.7, thinking varies)
-    "qwen/qwen3-8b": 0.7,
-    "qwen/qwen3-14b": 0.7,
-    "qwen/qwen3-4b-thinking-2507": 0.7,
-    
-    # Qwen 2.5 Coder (recommended 0.7 for consistency/creativity balance)
-    "qwen2.5-coder-7b-instruct": 0.7,
-    
-    # Gemma 3 (recommended default 1.0)
-    "google/gemma-3-12b": 1.0,
-    "google/gemma-3-4b": 1.0,
-    
-    # Ministral 3 (Reasoning recommended 0.7)
-    "mistralai/ministral-3-14b-reasoning": 0.7,
-    
-    # GLM-4 (Flash optimal around 0.7 - 0.8 for most tasks)
-    "zai-org/glm-4.6v-flash": 0.8,
-}
 
 # -----------------------------
 # Helpers
@@ -632,6 +600,7 @@ def compute_config_hash(args: argparse.Namespace) -> str:
     # Wandle die args in ein sortiertes Dict um
     config_dict = {
         "models": sorted(args.models),
+        "model_source": args.model_source,
         "repeats": args.repeats,
         "temperature": args.temperature,
         "max_tokens": args.max_tokens,
@@ -668,7 +637,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base-url", default=DEFAULT_BASE_URL)
     ap.add_argument("--api-key", default="lm-studio")
-    ap.add_argument("--models", nargs="*", default=DEFAULT_MODELS)
+    ap.add_argument("--models", nargs="*", default=None)
+    ap.add_argument("--model-source", choices=["auto", "api", "defaults"], default="auto")
+    ap.add_argument("--models-root", default=os.path.expanduser("~/.lmstudio/models"))
+    ap.add_argument("--list-available-models", action="store_true")
     ap.add_argument("--repeats", type=int, default=DEFAULT_REPEATS)
     ap.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
     ap.add_argument("--max-tokens", type=int, default=DEFAULT_MAX_TOKENS)
@@ -676,6 +648,40 @@ def main():
     ap.add_argument("--seed", type=int, default=None, help="Optional. If server supports it.")
     ap.add_argument("--outdir", default="logs_v2")
     args = ap.parse_args()
+
+    selected_models, model_info = resolve_models(
+        explicit_models=args.models,
+        default_models=DEFAULT_MODELS,
+        model_source=args.model_source,
+        base_url=args.base_url,
+        api_key=args.api_key,
+        timeout_s=min(args.timeout, 15),
+        models_root=args.models_root,
+    )
+    args.models = selected_models
+
+    if args.list_available_models:
+        print(format_model_inventory(model_info))
+        return
+
+    if not args.models:
+        raise SystemExit("No LLM models selected. Check /v1/models or pass --models explicitly.")
+
+    print(f"Model source: {model_info['selected_source']} -> {len(args.models)} model(s)")
+    if model_info.get("api_models"):
+        extra_models = [model for model in model_info["api_models"] if model not in DEFAULT_MODELS]
+        if extra_models:
+            print("Additional live models discovered:")
+            for model in extra_models:
+                print(f"  - {model}")
+    elif model_info.get("api_error") and args.model_source == "auto":
+        print(f"Live model lookup unavailable, using default list: {model_info['api_error']}")
+
+    unavailable = model_info.get("unavailable_explicit_models", [])
+    if unavailable:
+        print("Warning: these explicit models are not currently reported by /v1/models:")
+        for model in unavailable:
+            print(f"  - {model}")
 
     tests = build_tests()
     config_hash = compute_config_hash(args)
@@ -723,7 +729,7 @@ def main():
     with open(jsonl_path, file_mode, encoding="utf-8") as jf:
         for model in args.models:
             # Model-spezifische Temperatur holen:
-            model_temp = MODEL_TEMPERATURES.get(model, args.temperature)
+            model_temp = get_model_temperature(model, args.temperature)
             
             warmup_model(args.base_url, args.api_key, model, args.timeout)
             for rep in range(1, args.repeats + 1):
