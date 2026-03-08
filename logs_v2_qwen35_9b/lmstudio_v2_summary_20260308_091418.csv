@@ -1,0 +1,9 @@
+timestamp,model,repeat,test_id,category,pass,duration_s,status,tool_calls_seen,tool_calls_count,validator_details
+2026-03-08T09:14:53,qwen3.5-4b-claude-4.6-opus-reasoning-distilled,1,reasoning_01_discount,reasoning,False,25.6169,ok,False,0,got=1.0 expected=80.0 diff=79.0 tol=1e-06
+2026-03-08T09:15:01,qwen3.5-4b-claude-4.6-opus-reasoning-distilled,1,reasoning_02_split,reasoning,False,7.6795,ok,False,0,got=3.0 expected=42.0 diff=39.0 tol=1e-06
+2026-03-08T09:15:27,qwen3.5-4b-claude-4.6-opus-reasoning-distilled,1,reasoning_03_syllogism,reasoning,True,26.0047,ok,False,0,ok
+2026-03-08T09:15:51,qwen3.5-4b-claude-4.6-opus-reasoning-distilled,1,reasoning_04_two_numbers,reasoning,False,24.1552,ok,False,0,"got=(1.0,11.0) expected=(7.0,4.0) tol=1e-06"
+2026-03-08T09:15:59,qwen3.5-4b-claude-4.6-opus-reasoning-distilled,1,coding_01_median,coding,True,7.4901,ok,False,0,stdout=3 dur=0.067s expected=3
+2026-03-08T09:16:07,qwen3.5-4b-claude-4.6-opus-reasoning-distilled,1,coding_02_palindrome,coding,True,8.5077,ok,False,0,stdout=True dur=0.060s expected=True
+2026-03-08T09:16:24,qwen3.5-4b-claude-4.6-opus-reasoning-distilled,1,tooluse_01_calc,tooluse,False,16.5337,ok,True,1,got=17.0 expected=162 diff=145.0 tol=1e-06
+2026-03-08T09:16:31,qwen3.5-4b-claude-4.6-opus-reasoning-distilled,1,tooluse_02_kv,tooluse,True,6.9889,ok,True,1,ok

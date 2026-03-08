@@ -1,0 +1,19 @@
+LM STUDIO TESTSUITE V2 REPORT
+Generated: 2026-03-08T09:16:31
+
+MODEL: qwen3.5-4b-claude-4.6-opus-reasoning-distilled
+  Overall pass-rate: 4/8 = 50.0%
+  Avg latency: 15.372s | Std latency: 8.179s
+
+  Category: coding
+    pass-rate: 2/2 = 100.0%
+    avg: 7.999s | std: 0.509s
+  Category: reasoning
+    pass-rate: 1/4 = 25.0%
+    avg: 20.864s | std: 7.643s
+  Category: tooluse
+    pass-rate: 1/2 = 50.0%
+    avg: 11.761s | std: 4.772s
+    tool_calls_seen rate: 100.0%
+
+------------------------------------------------------------
